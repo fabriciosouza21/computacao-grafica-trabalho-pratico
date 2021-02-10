@@ -1,7 +1,5 @@
-from tkinter import Label
-from bresenham import *
+from bresenham import bresenham,matriz_zero
 from tkinter import *
-from tkinter import ttk
 
 class visao_geral:
     
@@ -28,32 +26,31 @@ class visao_geral:
         for label in self.labels:
             label[0].grid(row=label[1][0], column=label[1][1])
 
-    
-                
-      
+def preencher_matriz_coodenadas(matrix,coodenadas,last_row):
+    for coodenada in coodenadas:
+        matrix[last_row-coodenada[0]][coodenada[1]]=1
 
-'''A = [[1,0,0,0,0,0,0],
-     [0,1,0,0,0,0,0],
-     [0,0,1,0,0,0,0],
-     [0,0,0,1,0,0,0],
-     [0,0,0,0,1,0,0],
-     [0,0,0,0,0,1,0],
-     ]   '''
+def converter_matriz(coordenadas): 
+    linha,coluna=zip(*coordenadas)
+    minimo_coluna = (min(coluna))
+    minimo_linha = (min(linha))
+    new_coluna = coluna
+    new_linha = linha
+    if minimo_coluna < 0 :
+        equalizado = -minimo_coluna
+        new_coluna = list(map(lambda x: x + equalizado,coluna))
+    if minimo_linha < 0:
+        equalizado = -minimo_linha
+        new_linha = list(map(lambda x: x + equalizado,linha))
+    coordenadas = list(zip(new_linha,new_coluna))
+    A= matriz_zero(max(new_linha)+1,max(new_coluna)+1)
+    preencher_matriz_coodenadas(A,coordenadas,max(new_linha))       
+    return A
+
+
 root = Tk()
-
-valores = list(bresenham(-1, -4, 3, 2))
-linha,coluna=zip(*valores)
-minimo_coluna = (min(coluna))
-minimo_linha = (min(linha))
-if minimo_coluna < 0 :
-    equalizado = -minimo_coluna
-    new_coluna = list(map(lambda x: x + equalizado,coluna))
-if minimo_linha < 0:
-    equalizado = -minimo_linha
-    new_linha = list(map(lambda x: x + equalizado,linha))
-coordenadas = list(zip(new_linha,new_coluna))
-A= matriz_zero(max(new_linha)+1,max(new_coluna)+1)
-preencher_matriz_coodenadas(A,coordenadas,max(new_linha))
+valores = list(bresenham(10, 2, 15,-10 ))
+A = converter_matriz(valores)
 myapp = visao_geral(root,A)
 root.title("visão geral")
 root.mainloop()
