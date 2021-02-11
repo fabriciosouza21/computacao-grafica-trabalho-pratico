@@ -1,5 +1,6 @@
 from bresenham import bresenham,matriz_zero
 from tkinter import *
+from CG import *
 
 class visao_geral:
     
@@ -49,8 +50,9 @@ def converter_matriz(coordenadas):
 
 
 root = Tk()
-valores = list(bresenham(10, 2, 15,-10 ))
+valores = points_BezierCurve([(0,0),(7,6),(13,0)])
 A = converter_matriz(valores)
+print(valores)
 myapp = visao_geral(root,A)
 root.title("visão geral")
 root.mainloop()
