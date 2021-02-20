@@ -1,6 +1,7 @@
 from bresenham import bresenham,matriz_zero
 from tkinter import *
 from CG import *
+from preenchimento_recursivo import *
 from polilinha import polilinha_pontos
 from cohen_suth import cohenSutherlandClip, line_clip
 
@@ -54,9 +55,13 @@ def converter_matriz(coordenadas):
 root = Tk()
 A = matriz_zero(10,10)
 #valores = points_BezierCurve([(0,0),(20,7),(40,0)])
-#valores = polilinha_pontos([(-1,-4),(3,2),(7,-4),(3,-11)])
+valores = polilinha_pontos([(-1,-4),(3,2),(7,-4),(3,-11)])
 #valores = line_clip(7, 9, 11, 4)
-#A = converter_matriz(valores)
+print(valores)
+A = converter_matriz(valores)
+preenchimento_recursivo(A,0,1)
+for i in A:
+    print(i)
 myapp = visao_geral(root,A)
 root.title("visão geral")
 root.mainloop()
