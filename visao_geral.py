@@ -4,7 +4,7 @@ from CG import *
 from preenchimento_recursivo import *
 from polilinha import polilinha_pontos
 from cohen_suth import cohenSutherlandClip, line_clip
-
+from trasacao import rotacao,translacao,escala
 class visao_geral:
     
     def __init__(self,my_parente,matrix):
