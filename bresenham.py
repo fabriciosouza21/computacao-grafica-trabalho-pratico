@@ -37,5 +37,7 @@ def matriz_zero(linha,colunas):
 def preencher_matriz_coodenadas(matrix,coodenadas,last_row):
     for coodenada in coodenadas:
         matrix[last_row-coodenada[0]][coodenada[1]]=1
-
-
+def exec_bresenham(pontos):
+    return list(bresenham(pontos[0],pontos[1],pontos[2],pontos[3]))
+def bresenham_entrada():
+    return ["pontos"]

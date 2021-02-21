@@ -118,3 +118,28 @@ def midPointCircleDraw(x_centre, y_centre, r):
             list_points.append((y + x_centre,-x + y_centre))  
             list_points.append((-y + x_centre,-x + y_centre))
     return list_points
+
+def exec_midPointCircleDraw(pontos):
+    return midPointCircleDraw(pontos[1],pontos[2],pontos[0])
+
+def midPointCircleDraw_entrada():
+    return ["Raio","ponto"]
+
+def points_BezierCurve_entrada():
+    return ["Ponto inicial","Ponto Final","Controles"]
+
+def chunks(lista, n=2):
+    for i in range(0, len(lista), n):
+        yield tuple(lista[i:i + n])
+
+def exec_points_BezierCurve(pontos):
+    pontos = list(chunks(pontos))
+    print(pontos)
+    new_pontos = [pontos[0]]
+    controles = pontos[2:]
+    new_pontos.extend(controles) 
+    new_pontos.append(pontos[1])
+    print(new_pontos)
+    print(points_BezierCurve(new_pontos))
+    return points_BezierCurve(new_pontos)
+
