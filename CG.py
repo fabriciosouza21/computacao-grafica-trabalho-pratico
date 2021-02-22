@@ -130,16 +130,14 @@ def points_BezierCurve_entrada():
 
 def chunks(lista, n=2):
     for i in range(0, len(lista), n):
-        yield tuple(lista[i:i + n])
+        yield lista[i:i + n]
 
 def exec_points_BezierCurve(pontos):
     pontos = list(chunks(pontos))
-    print(pontos)
+    pontos = list(map(lambda x: (x[1],x[0]),pontos))
     new_pontos = [pontos[0]]
     controles = pontos[2:]
     new_pontos.extend(controles) 
     new_pontos.append(pontos[1])
-    print(new_pontos)
-    print(points_BezierCurve(new_pontos))
     return points_BezierCurve(new_pontos)
 

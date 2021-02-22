@@ -1,5 +1,9 @@
 from bresenham import bresenham 
 
+def chunks(lista, n=2):
+    for i in range(0, len(lista), n):
+        yield lista[i:i + n]
+
 class polilinha:
     def __init__(self,pontos):
         self.pontos = pontos
@@ -23,3 +27,10 @@ def polilinha_pontos(pontos):
     pontos = pontos
     restas = polilinha(pontos)
     return restas.polilinhas 
+
+def exec_polilinha(pontos):
+    pontos = list(chunks(pontos))
+    return polilinha_pontos(pontos)
+
+def polilinha_entrada():
+    return ["vertices"]

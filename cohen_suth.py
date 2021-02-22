@@ -109,14 +109,14 @@ def cohenSutherlandClip(x1, y1, x2, y2):
 	if accept: 
 		print ("Line accepted from %.2f, %.2f to %.2f, %.2f" % (x1, y1, x2, y2)) 
 		
-		return (bresenham(x1, y1, x2, y2))
+		return list(bresenham(x1, y1, x2, y2))
 		# Here the user can add code to display the rectangle 
 		# along with the accepted (portion of) lines 
 
 	else: 
 		print("Line rejected") 
 
-def line_clip(x1,y1,x2,y2,X_max=10,Y_max=8,X_min=4,Y_min=4):
+def line_clip(X_max,X_min,Y_max,Y_min,x1,y1,x2,y2,):
 	global x_max
 	global x_min
 	global y_max
@@ -126,6 +126,12 @@ def line_clip(x1,y1,x2,y2,X_max=10,Y_max=8,X_min=4,Y_min=4):
 	x_min = X_min
 	y_min = Y_min
 	return cohenSutherlandClip(x1, y1, x2, y2)
+def line_clip_entrada():
+	return ["janela de recorte","reta"]
+
+def exec_line_clip(pontos):
+	return line_clip(pontos[0],pontos[1],pontos[2],pontos[3],pontos[4],pontos[5],pontos[6],pontos[7])
+
 # Driver Script 
 # First Line segment 
 # P11 = (5, 5), P12 = (7, 7) 
@@ -138,3 +144,5 @@ def line_clip(x1,y1,x2,y2,X_max=10,Y_max=8,X_min=4,Y_min=4):
 # Third Line segment 
 # P31 = (1, 5), P32 = (4, 1) 
 #cohenSutherlandClip(1, 5, 4, 1) 
+
+#(X_max=10,X_min=4,Y_max=8
