@@ -1,4 +1,4 @@
-from bresenham import bresenham, bresenham_entrada, exec_bresenham,matriz_zero
+from bresenham import bresenham_entrada, exec_bresenham,matriz_zero
 from tkinter import *
 from CG import *
 from preenchimento_recursivo import *
@@ -68,6 +68,7 @@ class visao_geral:
             new_ponto = list((map(lambda x: int(x) ,tratamento_ponto)))
             pontos.extend((new_ponto))
         pontos = self.executa(pontos)
+        print(pontos)
         if self.preenchimento:
             self.matrix = converter_matriz(pontos[0])
             print(21- pontos[1][0])
@@ -87,7 +88,7 @@ def converter_matriz(coordenadas):
     minimo_coluna = (min(coluna))
     minimo_linha = (min(linha))
     new_coluna = list(map(lambda x: x + 1,coluna))
-    new_linha = linha#list(map(lambda x: x + 1,linha))
+    new_linha = linha
     if minimo_coluna < 0 :
         equalizado = -minimo_coluna
         new_coluna = list(map(lambda x: x + equalizado,coluna))
@@ -102,14 +103,7 @@ def converter_matriz(coordenadas):
 
 root = Tk()
 A = matriz_zero(21,40)
-#valores = points_BezierCurve([(0,0),(20,7),(40,0)])
-#valores = polilinha_pontos([(-1,-4),(3,2),(7,-4),(3,-11)])
-#valores = line_clip(7, 9, 11, 4)
-#A = converter_matriz(valores)
-#preenchimento_recursivo(A,4,3)
-
-myapp = visao_geral(root,A,exec_polilinha,polilinha_entrada())
+myapp = visao_geral(root,A,exec_line_clip,line_clip_entrada())
 root.title("visão geral")
 root.mainloop()
-#0,0,0,10,5,4        
-# 2,5
+    
